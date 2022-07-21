@@ -20,14 +20,21 @@ public class LevelGeneratorEditor : Editor
         EditorGUILayout.Space();
         myTarget.numberOfRooms = EditorGUILayout.IntField("Number Of Rooms", myTarget.numberOfRooms);
         EditorGUILayout.Space();
-        // myTarget.starterRooms = (GameObject)EditorGUILayout.ObjectField("Starter Rooms", myTarget.starterRooms, typeof(GameObject[]), true);
-        // EditorGUILayout.Space();
+        myTarget.roomTag = EditorGUILayout.TextField("Room's tag name", myTarget.roomTag);
+        EditorGUILayout.Space();
+        myTarget.mainGrid = (Grid)EditorGUILayout.ObjectField("Main Grid", myTarget.mainGrid, typeof(Grid), true);
+        EditorGUILayout.Space();
         m_Property = m_Object.FindProperty("starterRooms");
          EditorGUILayout.PropertyField(m_Property, new GUIContent("List of Starter Rooms"), true);
          m_Object.ApplyModifiedProperties();
         if(GUILayout.Button("Build Rooms"))
         {
             myTarget.GenerateRooms();
+        }
+        EditorGUILayout.Space();
+        if(GUILayout.Button("Clean Rooms"))
+        {
+            myTarget.CleanSpawnedRooms();
         }
     }
 }

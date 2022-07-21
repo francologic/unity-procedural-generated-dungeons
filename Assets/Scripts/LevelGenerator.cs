@@ -11,6 +11,8 @@ public class LevelGenerator : MonoBehaviour
 
     public int numberOfRooms = 20;
     public GameObject[] starterRooms;
+    public Grid mainGrid;
+    public string roomTag;
 
     void Start()
     {
@@ -19,11 +21,23 @@ public class LevelGenerator : MonoBehaviour
 
     public void GenerateRooms()
     {
-        Debug.Log("AAAA");
+        SpawnStarterRoom();
     }
 
-    private void spawnStarterRoom()
+    private void SpawnStarterRoom()
     {
+        Vector2 worldCenter = new (worldSize.x/2, worldSize.y/2);
+        int randomRoom = Random.Range(0, starterRooms.Length);
+        GameObject room = Instantiate(starterRooms[randomRoom], worldCenter, Quaternion.identity);
+        room.transform.parent = mainGrid.transform;
+    }
 
+    public void CleanSpawnedRooms()
+    {
+        GameObject[] rooms = GameObject.FindGameObjectsWithTag(roomTag);
+        foreach (var room in rooms)
+        {
+           DestroyImmediate(room); 
+        }
     }
 }
