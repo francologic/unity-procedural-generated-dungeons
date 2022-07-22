@@ -26,6 +26,9 @@ public class LevelGeneratorEditor : Editor
         m_Property = m_Object.FindProperty("starterRooms");
          EditorGUILayout.PropertyField(m_Property, new GUIContent("List of Starter Rooms"), true);
          m_Object.ApplyModifiedProperties();
+        m_Property = m_Object.FindProperty("middleRooms");
+         EditorGUILayout.PropertyField(m_Property, new GUIContent("List of Middle Rooms"), true);
+         m_Object.ApplyModifiedProperties();
         if(GUILayout.Button("Build Rooms"))
         {
             myTarget.GenerateRooms();

@@ -7,7 +7,7 @@ public class LevelGenerator : MonoBehaviour
 {
     private GameObject[] rooms;
 
-    private List<GameObject> takenPositions = new List<GameObject>();
+    private List<Vector2> takenPositions = new List<Vector2>();
 
     public int numberOfRooms = 20;
     public GameObject[] starterRooms;
@@ -22,7 +22,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void GenerateRooms()
     {
-        SpawnStarterRoom();
+        SpawnRooms();
     }
 
     public void CleanSpawnedRooms()
@@ -34,38 +34,12 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void SpawnStarterRoom()
+    private void SpawnRooms()
     {
         int randomRoom = Random.Range(0, starterRooms.Length);
         GameObject room = Instantiate(starterRooms[randomRoom], new (0,0), Quaternion.identity);
         room.transform.parent = mainGrid.transform;
-        room.GetComponent<Room>().gridPosition = new Vector2(0,0);
-        takenPositions.Insert(0,room);
-        Debug.Log(room.GetComponent<TilemapRenderer>().bounds.extents);
-
+        takenPositions.Insert(0,new Vector2(0,0));
+        
     }
-
-    private void SpawnRooms()
-    {
-        // Room currentRoom = rooms[(int)worldSize.x/2, (int)worldSize.y/2].GetComponent<Room>();
-        // Debug.Log(rooms[(int)worldSize.x/2, (int)worldSize.y/2].GetComponents<Renderer>().Length);
-
-        // if(currentRoom.doorBottom)
-        // {
-        // }
-        // if(currentRoom.doorTop)
-        // {
-            
-        // }
-        // if(currentRoom.doorLeft)
-        // {
-            
-        // }
-        // if(currentRoom.doorRight)
-        // {
-            
-        // }
-    }
-
-    
 }
