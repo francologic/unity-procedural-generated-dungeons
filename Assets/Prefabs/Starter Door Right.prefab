@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8964735393647121638}
   - component: {fileID: 644799179366062021}
   - component: {fileID: 4635648478642331443}
+  - component: {fileID: 6333496385847276942}
   m_Layer: 0
   m_Name: Starter Door Right
   m_TagString: Room
@@ -644,3 +645,20 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &6333496385847276942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540982933149264807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ccf4af5a5f90e44a3aac6bacd535dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0}
+  doorTop: 0
+  doorBottom: 0
+  doorLeft: 0
+  doorRight: 1

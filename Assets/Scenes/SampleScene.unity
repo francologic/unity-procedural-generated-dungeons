@@ -287,6 +287,7 @@ MonoBehaviour:
   - {fileID: 680177573068675635, guid: 1e24cf9fa831595448f109485bae6148, type: 3}
   - {fileID: 6540982933149264807, guid: edd2d1e0d710ad043a84810564017f8a, type: 3}
   - {fileID: 7650410931481324521, guid: aa7f83799b7a5b848a37a0ce9c1824f6, type: 3}
+  middleRooms: []
   mainGrid: {fileID: 190577600}
   roomTag: Room
 --- !u!4 &1162199861

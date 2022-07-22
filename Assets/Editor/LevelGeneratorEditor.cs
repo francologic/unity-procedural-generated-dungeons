@@ -16,7 +16,6 @@ public class LevelGeneratorEditor : Editor
     {
         EditorGUILayout.LabelField("Custom editor:");
         LevelGenerator myTarget = (LevelGenerator)target;
-        myTarget.worldSize = EditorGUILayout.Vector2Field("World Size", myTarget.worldSize);
         EditorGUILayout.Space();
         myTarget.numberOfRooms = EditorGUILayout.IntField("Number Of Rooms", myTarget.numberOfRooms);
         EditorGUILayout.Space();
