@@ -26,11 +26,11 @@ public class RoomController : MonoBehaviour
 
     void Start()
     {
-        LoadRoom("Start", 0, 0);
-        LoadRoom("Room", 1, 0);
-        LoadRoom("Room", -1, 0);
-        LoadRoom("Room", 0, 1);
-        LoadRoom("Room", 0, -1);
+        // LoadRoom("Start", 0, 0);
+        // LoadRoom("Room", 1, 0);
+        // LoadRoom("Room", -1, 0);
+        // LoadRoom("Room", 0, 1);
+        // LoadRoom("Room", 0, -1);
     }
 
     void Update()
@@ -87,8 +87,8 @@ public class RoomController : MonoBehaviour
     public void RegisterRoom(Room room)
     {
         room.transform.position = new Vector2(
-            currentLoadRoomData.x = room.width,
-            currentLoadRoomData.y = room.height
+            currentLoadRoomData.x * room.width,
+            currentLoadRoomData.y * room.height
         );
 
         room.x = currentLoadRoomData.x;

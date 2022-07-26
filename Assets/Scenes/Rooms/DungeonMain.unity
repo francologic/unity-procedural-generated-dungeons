@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296837876}
   - component: {fileID: 296837875}
+  - component: {fileID: 296837877}
   m_Layer: 0
   m_Name: RoomController
   m_TagString: Untagged
@@ -168,6 +169,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296837877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296837874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4294891c68313ca4db1efd9f744dddae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonGenerationData: {fileID: 11400000, guid: 48ce4911dfa684f4fb31bbe5b43502bf, type: 2}
 --- !u!1 &1711202913
 GameObject:
   m_ObjectHideFlags: 0
