@@ -10,6 +10,13 @@ public class Room : MonoBehaviour
     public int x;
     public int y;
 
+    private bool updatedDoors = false;
+
+    public Room(int newX, int newY){
+        x = newX;
+        y = newY;
+    }
+
     public Door leftDoor;
     public Door rightDoor;
     public Door topDoor;
@@ -53,6 +60,14 @@ public class Room : MonoBehaviour
         RoomController.instance.RegisterRoom(this);
     }
 
+void Update()
+{
+    if(name.Contains("End") && !updatedDoors)
+    {
+        RemoveUnconnectedDoors();
+        updatedDoors = true;
+    }
+}
     public void RemoveUnconnectedDoors()
     {
         foreach (Door door in doors)

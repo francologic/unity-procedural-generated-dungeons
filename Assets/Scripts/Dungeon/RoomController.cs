@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class RoomInfo
 {
@@ -18,19 +19,12 @@ public class RoomController : MonoBehaviour
     Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
     public List<Room> loadedRooms = new List<Room>();
     bool isLoadingRoom = false;
+    bool spawnBossRoom = false;
+    bool updatedRooms = false;
 
     void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
-        // LoadRoom("Start", 0, 0);
-        // LoadRoom("Room", 1, 0);
-        // LoadRoom("Room", -1, 0);
-        // LoadRoom("Room", 0, 1);
-        // LoadRoom("Room", 0, -1);
     }
 
     void Update()
@@ -47,12 +41,40 @@ public class RoomController : MonoBehaviour
 
         if (loadRoomQueue.Count == 0)
         {
+            if (!spawnBossRoom)
+            {
+                StartCoroutine(SpawnBossRoom());
+            }
+            else if (spawnBossRoom && !updatedRooms)
+            {
+
+                foreach (Room room in loadedRooms)
+                {
+                    room.RemoveUnconnectedDoors();
+                }
+                updatedRooms = true;
+            }
             return;
         }
         currentLoadRoomData = loadRoomQueue.Dequeue();
         isLoadingRoom = true;
 
         StartCoroutine(LoadRommRoutine(currentLoadRoomData));
+    }
+
+    IEnumerator SpawnBossRoom()
+    {
+        spawnBossRoom = true;
+        yield return new WaitForSeconds(.5f);
+        if (loadRoomQueue.Count == 0)
+        {
+            Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+            Room tempRoom = new Room(bossRoom.x, bossRoom.y);
+            Destroy(bossRoom.gameObject);
+            var roomToRemove = loadedRooms.Single(r => r.x == tempRoom.x && r.y == tempRoom.y);
+            loadedRooms.Remove(roomToRemove);
+            LoadRoom("End", tempRoom.x, tempRoom.y);
+        }
     }
 
     public bool DoesRoomExists(int x, int y)
@@ -106,7 +128,6 @@ public class RoomController : MonoBehaviour
             isLoadingRoom = false;
 
             loadedRooms.Add(room);
-            room.RemoveUnconnectedDoors();
         }
         else
         {
