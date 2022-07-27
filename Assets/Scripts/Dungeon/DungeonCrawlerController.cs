@@ -7,7 +7,7 @@ public enum Direction
     up = 0,
     left = 1,
     down = 2,
-    right = 1
+    right = 3
 };
 
 public class DungeonCrawlerController : MonoBehaviour

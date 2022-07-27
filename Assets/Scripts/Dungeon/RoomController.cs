@@ -86,18 +86,26 @@ public class RoomController : MonoBehaviour
 
     public void RegisterRoom(Room room)
     {
-        room.transform.position = new Vector2(
-            currentLoadRoomData.x * room.width,
-            currentLoadRoomData.y * room.height
-        );
+        if (!DoesRoomExists(currentLoadRoomData.x, currentLoadRoomData.y))
+        {
+            room.transform.position = new Vector2(
+                currentLoadRoomData.x * room.width,
+                currentLoadRoomData.y * room.height
+            );
 
-        room.x = currentLoadRoomData.x;
-        room.y = currentLoadRoomData.y;
-        room.name = currentWorldName + "-" + currentLoadRoomData.name + " " + room.x + ", " + room.y;
-        room.transform.parent = transform;
+            room.x = currentLoadRoomData.x;
+            room.y = currentLoadRoomData.y;
+            room.name = currentWorldName + "-" + currentLoadRoomData.name + " " + room.x + ", " + room.y;
+            room.transform.parent = transform;
 
-        isLoadingRoom = false;
+            isLoadingRoom = false;
 
-        loadedRooms.Add(room);
+            loadedRooms.Add(room);
+        }
+        else
+        {
+            Destroy(room.gameObject);
+            isLoadingRoom = false;
+        }
     }
 }
