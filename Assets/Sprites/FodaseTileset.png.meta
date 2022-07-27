@@ -190,6 +190,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: FodaseTileset_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c665990c88e9ec64b96d98d734c4da8c
+      internalID: 356155952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -204,6 +225,7 @@ TextureImporter:
       FodaseTileset_0: -1100658259
       FodaseTileset_1: 641188096
       FodaseTileset_2: -402600467
+      FodaseTileset_3: 356155952
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

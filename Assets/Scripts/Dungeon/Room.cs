@@ -53,44 +53,65 @@ public class Room : MonoBehaviour
         RoomController.instance.RegisterRoom(this);
     }
 
-    // public void RemoveUnconnectedDoors()
-    // {
-    //     foreach (Door door in doors)
-    //     {
-    //         switch (door.doorType)
-    //         {
-    //             case Door.DoorType.right:
-    //                 rightDoor = d;
-    //                 break;
-    //             case Door.DoorType.left:
-    //                 leftDoor = d;
-    //                 break;
-    //             case Door.DoorType.top:
-    //                 topDoor = d;
-    //                 break;
-    //             case Door.DoorType.bottom:
-    //                 bottomDoor = d;
-    //                 break;
-    //         }
-    //     }
-    // }
+    public void RemoveUnconnectedDoors()
+    {
+        foreach (Door door in doors)
+        {
+            switch (door.doorType)
+            {
+                case Door.DoorType.right:
+                    if (GetRight() == null)
+                        door.gameObject.SetActive(false);
+                    break;
+                case Door.DoorType.left:
+                    if (GetLeft() == null)
+                        door.gameObject.SetActive(false);
+                    break;
+                case Door.DoorType.top:
+                    if (GetTop() == null)
+                        door.gameObject.SetActive(false);
+                    break;
+                case Door.DoorType.bottom:
+                    if (GetBottom() == null)
+                        door.gameObject.SetActive(false);
+                    break;
+            }
+        }
+    }
 
-    // public Room GetRight()
-    // {
-        
-    // }
-    // public Room GetLeft()
-    // {
+    public Room GetRight()
+    {
+        if (RoomController.instance.DoesRoomExists(x + 1, y))
+        {
+            return RoomController.instance.FindRoom(x + 1, y);
+        }
+        return null;
+    }
+    public Room GetLeft()
+    {
+        if (RoomController.instance.DoesRoomExists(x - 1, y))
+        {
+            return RoomController.instance.FindRoom(x - 1, y);
+        }
+        return null;
+    }
+    public Room GetTop()
+    {
+        if (RoomController.instance.DoesRoomExists(x, y + 1))
+        {
+            return RoomController.instance.FindRoom(x, y + 1);
+        }
+        return null;
+    }
+    public Room GetBottom()
+    {
+        if (RoomController.instance.DoesRoomExists(x, y - 1))
+        {
+            return RoomController.instance.FindRoom(x, y - 1);
+        }
+        return null;
+    }
 
-    // }
-    // public Room GetTop()
-    // {
-
-    // }
-    // public Room GetBottom()
-    // {
-
-    // }
 
     public Vector2 GetRoomCenter()
     {

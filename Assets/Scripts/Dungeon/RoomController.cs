@@ -60,6 +60,11 @@ public class RoomController : MonoBehaviour
         return loadedRooms.Find(item => item.x == x && item.y == y) != null;
     }
 
+    public Room FindRoom(int x, int y)
+    {
+        return loadedRooms.Find(item => item.x == x && item.y == y);
+    }
+
     public void LoadRoom(string name, int x, int y)
     {
         if (DoesRoomExists(x, y))
@@ -101,6 +106,7 @@ public class RoomController : MonoBehaviour
             isLoadingRoom = false;
 
             loadedRooms.Add(room);
+            room.RemoveUnconnectedDoors();
         }
         else
         {
