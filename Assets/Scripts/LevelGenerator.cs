@@ -15,11 +15,6 @@ public class LevelGenerator : MonoBehaviour
     public Grid mainGrid;
     public string roomTag;
 
-    void Start()
-    {
-
-    }
-
     public void GenerateRooms()
     {
         SpawnRooms();
@@ -40,6 +35,5 @@ public class LevelGenerator : MonoBehaviour
         GameObject room = Instantiate(starterRooms[randomRoom], new (0,0), Quaternion.identity);
         room.transform.parent = mainGrid.transform;
         takenPositions.Insert(0,new Vector2(0,0));
-        
     }
 }

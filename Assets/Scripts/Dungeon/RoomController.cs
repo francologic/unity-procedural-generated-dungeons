@@ -6,7 +6,6 @@ using System.Linq;
 
 public class RoomInfo
 {
-
     public string name;
     public int x;
     public int y;

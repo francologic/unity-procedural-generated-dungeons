@@ -15,3 +15,9 @@ MonoBehaviour:
   numberOfCrawlers: 2
   interationMin: 7
   interationMax: 10
+  starterRoomName: 
+  bossRoomName: 
+  roomsNames:
+  - Room1
+  - Room2
+  - Room3
